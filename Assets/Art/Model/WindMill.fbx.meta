@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 9ba1f238798ac564a932d0df3a6dcc86
-timeCreated: 1479308879
+guid: 9b5221e6baf357642a04f8a2b5249633
+timeCreated: 1479311098
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Hole
-    100002: Planet
+    100000: polySurface209
+    100002: TiltCar04:TiltCarWindMill
     100004: //RootNode
-    400000: Hole
-    400002: Planet
+    400000: polySurface209
+    400002: TiltCar04:TiltCarWindMill
     400004: //RootNode
-    2300000: Hole
-    2300002: Planet
-    3300000: Hole
-    3300002: Planet
-    4300000: Hole
-    4300002: Planet
+    2300000: polySurface209
+    2300002: TiltCar04:TiltCarWindMill
+    3300000: polySurface209
+    3300002: TiltCar04:TiltCarWindMill
+    4300000: TiltCar04:TiltCarWindMill
+    4300002: polySurface209
   materials:
     importMaterials: 0
     materialName: 0
@@ -46,7 +46,7 @@ ModelImporter:
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
