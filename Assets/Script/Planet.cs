@@ -6,7 +6,7 @@ using System;
 public class Planet : MonoBehaviour {
 
     RGInput input;
-    public float rotationSpeed;
+    public float rotationSpeed = 10f;
 
 
     void Awake() {
@@ -23,9 +23,11 @@ public class Planet : MonoBehaviour {
 	}
 
     private void HandleInput() {
-        Vector2 touchPosition = input.GetTouchPosition() - new Vector2(-0.5f, -0.5f);
-
-        transform.rotation *= Quaternion.Euler(touchPosition.y * rotationSpeed * Time.deltaTime,  touchPosition.x * rotationSpeed * Time.deltaTime ,  0  );
+        Vector2 touchPosition = input.GetTouchPosition() - new Vector2(0.5f, 0.5f);
+        Debug.Log("TP" + touchPosition);
+        if(input.ButtonIsDown(RGInput.Button.Touch)) {
+            transform.rotation *= Quaternion.Euler(touchPosition.y * rotationSpeed * Time.deltaTime,  touchPosition.x * rotationSpeed * Time.deltaTime ,  0  );
+        }
 
     }
 }
