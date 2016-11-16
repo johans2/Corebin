@@ -24,9 +24,6 @@ namespace RGCommon {
 #if UNITY_EDITOR
             mouseEnabled = true;
 #endif
-#if RELEASE_BUILD
-            Destroy(this);
-#endif
         }
 
         void Update() {
@@ -35,7 +32,6 @@ namespace RGCommon {
             }
             if(Input.GetKeyDown(recenterKey)) {
                 UnityEngine.VR.InputTracking.Recenter();
-                mouseRotation = Vector3.zero;
             }
 
             if(Input.touchCount > 0) {

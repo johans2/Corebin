@@ -53,7 +53,12 @@ public class BuildSystem {
     }
 
     private static string GetPackageName() {
-        return "com.resolutiongames." + GetEnv("PACKAGE_SUFFIX");
+        if(IsRelease()) {
+            return "com.resolutiongames." + GetEnv("PACKAGE_SUFFIX");
+        }
+        else {
+            return "com.resolutiongames.dev." + GetEnv("PACKAGE_SUFFIX");
+        }
     }
 
     private static bool IsRelease() {

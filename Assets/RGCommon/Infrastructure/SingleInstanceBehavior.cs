@@ -33,22 +33,11 @@ namespace RGCommon {
             instance = null;
         }
 
-        /// <summary>
-        /// Get the instance. It is an error if the instance hasn't been created.
-        /// </summary>
         public static T Instance {
             get {
                 Assert.IsNotNull(instance, "No instance of " + typeof(T));
                 return instance;
             }
-        }
-
-        /// <summary>
-        /// Get the instance if it exists.
-        /// </summary>
-        /// <returns>The instance, or null if it hasn't been created</returns>
-        public static T GetInstance() {
-            return instance;
         }
     }
 }
