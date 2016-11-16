@@ -24,9 +24,10 @@ public class Planet : MonoBehaviour {
 
     private void HandleInput() {
         Vector2 touchPosition = input.GetTouchPosition() - new Vector2(0.5f, 0.5f);
-        Debug.Log("TP" + touchPosition);
         if(input.ButtonIsDown(RGInput.Button.Touch)) {
-            transform.rotation *= Quaternion.Euler(touchPosition.y * rotationSpeed * Time.deltaTime,  touchPosition.x * rotationSpeed * Time.deltaTime ,  0  );
+            transform.RotateAround(transform.position, Vector3.up, touchPosition.x * rotationSpeed * Time.deltaTime);
+            transform.RotateAround(transform.position, Vector3.right, touchPosition.y * rotationSpeed * Time.deltaTime);
+
         }
 
     }
