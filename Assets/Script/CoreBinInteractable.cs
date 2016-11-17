@@ -2,8 +2,12 @@
 using System.Collections;
 using System;
 using RGCommon;
+using CakewalkIoC.Signal;
 
 public class CoreBinInteractable : Interactable {
+
+    public int expGain = 34;
+    public static Signal<int> GainExpSignal = new Signal<int>();
 
     private Transform throwTarget1;
     private Transform throwTarget2;
@@ -22,6 +26,7 @@ public class CoreBinInteractable : Interactable {
             LeanTween.move(loot, throwTarget2.rotation.eulerAngles, 0.2f).setOnComplete(() => {
                 // Gain exp!
                 Destroy(loot);
+                GainExpSignal.Dispatch(expGain);
                 OnInteractionComplete(null);  
             });
         });

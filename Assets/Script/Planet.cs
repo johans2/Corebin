@@ -32,13 +32,13 @@ public class Planet : MonoBehaviour {
         rend = Find.ComponentOnChild<Renderer>(this, "Planet");
         CameraBehaviour.LevelUpFadeDoneSignal.AddListener(OnLevelUpFadeDone);
         PlayerAvatar.IsInteractingSignal.AddListener(OnPlayerInteracting);
-
+        ExpBar.LevelUpSignal.AddListener(LevelUp);
 
         for(int i = 0; i < propsParent.transform.childCount; i++) {
             props.Add(propsParent.transform.GetChild(i).gameObject);
         }
     }
-
+    
     private void OnPlayerInteracting(bool isInteracting) {
         playerIsInteracting = isInteracting;
     }
