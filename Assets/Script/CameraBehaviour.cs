@@ -14,7 +14,7 @@ public class CameraBehaviour : MonoBehaviour {
 	void Start () {
         fader = Find.ComponentOnGameObject<Fader>(this);
         Planet.LevelUpSignal.AddListener(OnLevelUp);
-        startPosition = transform.position;
+        startPosition = transform.parent.position;
 
         fader.fadeTime = 0.7f;
     }
@@ -32,7 +32,7 @@ public class CameraBehaviour : MonoBehaviour {
         }
 
         // Move camera
-        transform.position *= Constants.PlanetScaleFactor;
+        transform.parent.position *= Constants.PlanetScaleFactor;
         
         // Fade in
         fader.FadeIn();
