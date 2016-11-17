@@ -65,7 +65,8 @@ public class PlayerAvatar : MonoBehaviour {
 
         // Interactables.
         if(input.ButtonWasPressed(RGInput.Button.Click) && currentInteractable != null && !isInteracting) {
-            if(currentInteractable.CompareTag("Lootable") && currentLoot == null) {
+            
+            if(currentInteractable.CompareTag("Lootable") && currentLoot == null && currentInteractable.isInteractable) {
                 isInteracting = true;
                 IsInteractingSignal.Dispatch(true);
                 currentInteractable.Interact(this, OnCollectComplete);
