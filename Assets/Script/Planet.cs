@@ -3,22 +3,26 @@ using System.Collections;
 using RGCommon;
 using System;
 using System.Collections.Generic;
+using CakewalkIoC.Signal;
 
 public class Planet : MonoBehaviour {
 
+    public static Signal<int> LevelUpSignal = new Signal<int>();
+
     public GameObject boy;
     public float rotationSpeed = 100f;
-
-
+    
     private RGInput input;
-    private float scaleFactor = 1.2f;
     private GameObject propsParent;
     private List<GameObject> props;
 
     private float currentRadius;
     private Renderer rend;
 
+    private int level;
+
     void Awake() {
+        level = 0;
         props = new List<GameObject>();
         input = RGInput.Instance;
         propsParent = Find.ChildByName(this, "Props");
@@ -31,18 +35,17 @@ public class Planet : MonoBehaviour {
 
     void Start() {
         currentRadius = rend.bounds.extents.magnitude;
-
     }
 
     public void LevelUp() {
-        
-        transform.localScale = new Vector3(transform.localScale.x * scaleFactor, transform.localScale.y * scaleFactor, transform.localScale.z * scaleFactor);
+        level++;
+        transform.localScale *= Constants.PlanetScaleFactor; 
         for(int i = 0; i < props.Count; i++) {
             GameObject prop = props[i];
 
-            prop.transform.localScale *= 1 / scaleFactor;
+            prop.transform.localScale *= 1 / Constants.PlanetScaleFactor;
         }
-        boy.transform.localScale *= 1 / scaleFactor;
+        LevelUpSignal.Dispatch(level);
     }
 
 	void Update () {

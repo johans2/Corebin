@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using RGCommon;
+using System;
 
 public class PlayerAvatar : MonoBehaviour {
 
@@ -12,12 +13,17 @@ public class PlayerAvatar : MonoBehaviour {
     private float animationSpeed;
 
     void Awake() {
+        Planet.LevelUpSignal.AddListener(OnLevelUp);
         input = RGInput.Instance;
         charTransform = Find.ComponentOnChild<Transform>(this, "Boy");
         anim = Find.ComponentOnChild<Animator>(this, "Boy");
     }
 
-	void Start () {
+    private void OnLevelUp(int newLevel) {
+        transform.localScale *= 1 / Constants.PlanetScaleFactor;
+    }
+
+    void Start () {
         startRotation = charTransform.localRotation;
 	}
 	
@@ -43,5 +49,9 @@ public class PlayerAvatar : MonoBehaviour {
         }
 
         anim.SetFloat("runSpeed", animationSpeed);
+    }
+
+    void OnDestroy() {
+        Planet.LevelUpSignal.RemoveListener(OnLevelUp);
     }
 }
