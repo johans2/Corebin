@@ -2,10 +2,13 @@
 using System.Collections;
 using RGCommon;
 using System;
+using CakewalkIoC.Signal;
 
 public class PlayerAvatar : MonoBehaviour {
 
+    public static Signal<bool> IsInteractingSignal = new Signal<bool>();
 
+    public Transform ObjectHolder { get { return objectHolder; } }
 
     private RGInput input;
     private Quaternion startRotation;
@@ -13,12 +16,18 @@ public class PlayerAvatar : MonoBehaviour {
     private Animator anim;
 
     private float animationSpeed;
-
+    private Interactable currentInteractable;
+    private bool isInteracting = false;
+    private GameObject currentLoot;
+    
+    private Transform objectHolder;
+    
     void Awake() {
         CameraBehaviour.LevelUpFadeDoneSignal.AddListener(OnLevelUp);
         input = RGInput.Instance;
         charTransform = Find.ComponentOnChild<Transform>(this, "Boy");
         anim = Find.ComponentOnChild<Animator>(this, "Boy");
+        objectHolder = Find.ComponentOnChild<Transform>(this, "Boy/LootHolder");
     }
 
     private void OnLevelUp() {
@@ -30,7 +39,7 @@ public class PlayerAvatar : MonoBehaviour {
 	}
 	
 	void Update () {
-        if(input.ButtonIsDown(RGInput.Button.Touch)) {
+        if(input.ButtonIsDown(RGInput.Button.Touch) && !isInteracting) {
             // Update rotation.
             Vector2 refVector = Vector2.up;
             Vector2 touchVector = input.GetTouchPosition() - new Vector2(0.5f, 0.5f);
@@ -48,9 +57,39 @@ public class PlayerAvatar : MonoBehaviour {
         else {
             animationSpeed = 0f;
         }
+
+        if(input.ButtonWasPressed(RGInput.Button.Click) && currentInteractable != null && !isInteracting && currentLoot == null) {
+            isInteracting = true;
+            IsInteractingSignal.Dispatch(true);
+            currentInteractable.Interact(this, OnCollectComplete);
+        }
+
+
         anim.SetFloat("runSpeed", animationSpeed);
     }
 
+    void OnCollectComplete(GameObject reward) {
+        isInteracting = false;
+        IsInteractingSignal.Dispatch(false);
+        SpawnLootItem(reward);
+    }
+
+    void SpawnLootItem(GameObject item) {
+        currentLoot = (GameObject)Instantiate(item, objectHolder.position, Quaternion.identity);
+        currentLoot.transform.parent = objectHolder;
+    }
+
+    void OnTriggerEnter(Collider other) {
+        Interactable inter = other.gameObject.GetComponent<Interactable>();
+        if(inter != null) {
+            currentInteractable = inter;
+        }
+    }
+
+    void OnTriggerExit(Collider other) {
+        currentInteractable = null;
+    }
+    
     void OnDestroy() {
         CameraBehaviour.LevelUpFadeDoneSignal.RemoveListener(OnLevelUp);
     }

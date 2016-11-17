@@ -20,18 +20,27 @@ public class Planet : MonoBehaviour {
     private Renderer rend;
 
     private int level;
+    private bool playerIsInteracting;
+
 
     void Awake() {
         level = 0;
         props = new List<GameObject>();
         input = RGInput.Instance;
+        playerIsInteracting = false;
         propsParent = Find.ChildByName(this, "Props");
         rend = Find.ComponentOnChild<Renderer>(this, "Planet");
         CameraBehaviour.LevelUpFadeDoneSignal.AddListener(OnLevelUpFadeDone);
+        PlayerAvatar.IsInteractingSignal.AddListener(OnPlayerInteracting);
+
 
         for(int i = 0; i < propsParent.transform.childCount; i++) {
             props.Add(propsParent.transform.GetChild(i).gameObject);
         }
+    }
+
+    private void OnPlayerInteracting(bool isInteracting) {
+        playerIsInteracting = isInteracting;
     }
 
     void Start() {
@@ -69,6 +78,10 @@ public class Planet : MonoBehaviour {
     }
     
     private void HandleInput() {
+        if(playerIsInteracting) {
+            return;
+        }
+
         Vector2 touchPosition = input.GetTouchPosition() - new Vector2(0.5f, 0.5f);
         if(input.ButtonIsDown(RGInput.Button.Touch)) {
             transform.RotateAround(transform.position, Vector3.up, touchPosition.x * rotationSpeed * Time.deltaTime);
