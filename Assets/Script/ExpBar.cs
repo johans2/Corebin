@@ -31,6 +31,7 @@ public class ExpBar : MonoBehaviour {
         currentExp = 0;
         transform.position *= Constants.PlanetScaleFactor;
         expBar.transform.localScale = new Vector3(expBar.transform.localScale.x, 0.05f, expBar.transform.localScale.z);
+        transform.localScale *= Constants.PlanetScaleFactor;
         expRenderer.material.SetFloat("_LerpValue", 0);
     }
 

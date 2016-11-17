@@ -10,9 +10,9 @@ public class InteractableTree : Interactable {
     
     public override void Interact(PlayerAvatar player, Action<GameObject> OnInteractionComplete) {
         isInteractable = false;
-        GameObject axe = (GameObject)Instantiate(cuttingAxe, player.ObjectHolder.position, Quaternion.identity);
+        GameObject axe = (GameObject)Instantiate(cuttingAxe, player.ObjectHolder.position, player.ObjectHolder.rotation);
 
-        LeanTween.rotate(axe, new Vector3(50, 0, 0), 0.1f).setLoopPingPong(5).setOnComplete(() => {
+        LeanTween.rotateLocal(axe, new Vector3(50, 0, 0), 0.1f).setLoopPingPong(5).setOnComplete(() => {
             Destroy(axe);
             OnInteractionComplete(log);
             ReGrow();

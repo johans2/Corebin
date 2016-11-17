@@ -23,7 +23,7 @@ public class CoreBinInteractable : Interactable {
         LeanTween.rotate(loot, throwTarget1.rotation.eulerAngles, 0.2f);
         LeanTween.move(loot, throwTarget1.position, 0.2f).setOnComplete(() => {
             LeanTween.rotate(loot, throwTarget2.rotation.eulerAngles, 0.2f);
-            LeanTween.move(loot, throwTarget2.rotation.eulerAngles, 0.2f).setOnComplete(() => {
+            LeanTween.move(loot, throwTarget2.position, 0.2f).setOnComplete(() => {
                 // Gain exp!
                 Destroy(loot);
                 GainExpSignal.Dispatch(expGain);
