@@ -10,6 +10,10 @@ public class PlayerAvatar : MonoBehaviour {
 
     public Transform ObjectHolder { get { return objectHolder; } }
 
+    public GameObject CurrentLoot {
+        get { return currentLoot; }
+    }
+
     private RGInput input;
     private Quaternion startRotation;
     private Transform charTransform;
@@ -58,14 +62,30 @@ public class PlayerAvatar : MonoBehaviour {
             animationSpeed = 0f;
         }
 
-        if(input.ButtonWasPressed(RGInput.Button.Click) && currentInteractable != null && !isInteracting && currentLoot == null) {
-            isInteracting = true;
-            IsInteractingSignal.Dispatch(true);
-            currentInteractable.Interact(this, OnCollectComplete);
+
+        // Interactables.
+        if(input.ButtonWasPressed(RGInput.Button.Click) && currentInteractable != null && !isInteracting) {
+            if(currentInteractable.CompareTag("Lootable") && currentLoot == null) {
+                isInteracting = true;
+                IsInteractingSignal.Dispatch(true);
+                currentInteractable.Interact(this, OnCollectComplete);
+
+            }
+
+            else if(currentInteractable.CompareTag("CoreBin")) {
+                isInteracting = true;
+                IsInteractingSignal.Dispatch(true);
+                currentInteractable.Interact(this, OnThrowToBinComplete);
+            }
+
         }
-
-
+        
         anim.SetFloat("runSpeed", animationSpeed);
+    }
+
+    private void OnThrowToBinComplete(GameObject obj) {
+        isInteracting = false;
+        IsInteractingSignal.Dispatch(false);
     }
 
     void OnCollectComplete(GameObject reward) {
@@ -73,6 +93,7 @@ public class PlayerAvatar : MonoBehaviour {
         IsInteractingSignal.Dispatch(false);
         SpawnLootItem(reward);
     }
+    
 
     void SpawnLootItem(GameObject item) {
         currentLoot = (GameObject)Instantiate(item, objectHolder.position, Quaternion.identity);
