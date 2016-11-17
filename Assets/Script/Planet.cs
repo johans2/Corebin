@@ -6,7 +6,7 @@ using System;
 public class Planet : MonoBehaviour {
 
     RGInput input;
-    public float rotationSpeed = 10f;
+    public float rotationSpeed = 100f;
 
 
     void Awake() {
@@ -27,7 +27,7 @@ public class Planet : MonoBehaviour {
         if(input.ButtonIsDown(RGInput.Button.Touch)) {
             transform.RotateAround(transform.position, Vector3.up, touchPosition.x * rotationSpeed * Time.deltaTime);
             transform.RotateAround(transform.position, Vector3.right, touchPosition.y * rotationSpeed * Time.deltaTime);
-
+            Debug.Log("Updating planet!: " + touchPosition);
         }
 
     }
