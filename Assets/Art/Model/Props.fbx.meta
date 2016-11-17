@@ -32,6 +32,39 @@ ModelImporter:
     100048: polySurface223
     100050: polySurface224
     100052: TiltCar04:TiltCarWindMill
+    100054: Branch
+    100056: Bush01
+    100058: Bush02
+    100060: Chopped
+    100062: CoreBin01
+    100064: Fence01
+    100066: Fence02
+    100068: Fence03
+    100070: Fence04
+    100072: Grass
+    100074: House
+    100076: Lava
+    100078: Log01
+    100080: Log02
+    100082: Log03
+    100084: Log04
+    100086: Rock01
+    100088: Rock02
+    100090: Rocks
+    100092: Rotor
+    100094: SmallStone01
+    100096: Tree
+    100098: Tree01
+    100100: Tree02
+    100102: Tree03
+    100104: Tree04
+    100106: Tree05
+    100108: Tree06
+    100110: Tree07
+    100112: Tree08
+    100114: Trunk
+    100116: Trunk1
+    100118: Windmill
     400000: polySurface13
     400002: polySurface133
     400004: polySurface134
@@ -59,6 +92,39 @@ ModelImporter:
     400048: polySurface223
     400050: polySurface224
     400052: TiltCar04:TiltCarWindMill
+    400054: Branch
+    400056: Bush01
+    400058: Bush02
+    400060: Chopped
+    400062: CoreBin01
+    400064: Fence01
+    400066: Fence02
+    400068: Fence03
+    400070: Fence04
+    400072: Grass
+    400074: House
+    400076: Lava
+    400078: Log01
+    400080: Log02
+    400082: Log03
+    400084: Log04
+    400086: Rock01
+    400088: Rock02
+    400090: Rocks
+    400092: Rotor
+    400094: SmallStone01
+    400096: Tree
+    400098: Tree01
+    400100: Tree02
+    400102: Tree03
+    400104: Tree04
+    400106: Tree05
+    400108: Tree06
+    400110: Tree07
+    400112: Tree08
+    400114: Trunk
+    400116: Trunk1
+    400118: Windmill
     2300000: polySurface13
     2300002: polySurface133
     2300004: polySurface134
@@ -82,6 +148,35 @@ ModelImporter:
     2300040: polySurface223
     2300042: polySurface224
     2300044: TiltCar04:TiltCarWindMill
+    2300046: Branch
+    2300048: Bush01
+    2300050: Bush02
+    2300052: Fence01
+    2300054: Fence02
+    2300056: Fence03
+    2300058: Fence04
+    2300060: Grass
+    2300062: House
+    2300064: Lava
+    2300066: Log01
+    2300068: Log02
+    2300070: Log03
+    2300072: Log04
+    2300074: Rock01
+    2300076: Rock02
+    2300078: Rocks
+    2300080: Rotor
+    2300082: SmallStone01
+    2300084: Tree
+    2300086: Tree01
+    2300088: Tree02
+    2300090: Tree03
+    2300092: Tree04
+    2300094: Tree05
+    2300096: Tree06
+    2300098: Tree07
+    2300100: Trunk
+    2300102: Trunk1
     3300000: polySurface13
     3300002: polySurface133
     3300004: polySurface134
@@ -105,6 +200,35 @@ ModelImporter:
     3300040: polySurface223
     3300042: polySurface224
     3300044: TiltCar04:TiltCarWindMill
+    3300046: Branch
+    3300048: Bush01
+    3300050: Bush02
+    3300052: Fence01
+    3300054: Fence02
+    3300056: Fence03
+    3300058: Fence04
+    3300060: Grass
+    3300062: House
+    3300064: Lava
+    3300066: Log01
+    3300068: Log02
+    3300070: Log03
+    3300072: Log04
+    3300074: Rock01
+    3300076: Rock02
+    3300078: Rocks
+    3300080: Rotor
+    3300082: SmallStone01
+    3300084: Tree
+    3300086: Tree01
+    3300088: Tree02
+    3300090: Tree03
+    3300092: Tree04
+    3300094: Tree05
+    3300096: Tree06
+    3300098: Tree07
+    3300100: Trunk
+    3300102: Trunk1
     4300000: polySurface133
     4300002: polySurface134
     4300004: polySurface195
@@ -128,6 +252,35 @@ ModelImporter:
     4300040: polySurface223
     4300042: TiltCar04:TiltCarWindMill
     4300044: polySurface209
+    4300046: SmallStone01
+    4300048: Bush01
+    4300050: Rock01
+    4300052: Rock02
+    4300054: Tree01
+    4300056: Tree02
+    4300058: Fence01
+    4300060: Fence02
+    4300062: Fence03
+    4300064: Fence04
+    4300066: Bush02
+    4300068: Tree03
+    4300070: Tree04
+    4300072: Tree05
+    4300074: Tree06
+    4300076: Tree07
+    4300078: Tree
+    4300080: Branch
+    4300082: Trunk
+    4300084: Log01
+    4300086: Log02
+    4300088: Log03
+    4300090: Log04
+    4300092: Rotor
+    4300094: House
+    4300096: Grass
+    4300098: Rocks
+    4300100: Trunk1
+    4300102: Lava
   materials:
     importMaterials: 0
     materialName: 0
