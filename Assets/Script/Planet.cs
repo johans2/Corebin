@@ -6,40 +6,43 @@ using System.Collections.Generic;
 
 public class Planet : MonoBehaviour {
 
-
-
-    RGInput input;
+    public GameObject boy;
     public float rotationSpeed = 100f;
-    //public Transform globeTransform;
 
 
+    private RGInput input;
     private float scaleFactor = 1.2f;
     private GameObject propsParent;
     private List<GameObject> props;
 
+    private float currentRadius;
+    private Renderer rend;
+
     void Awake() {
         props = new List<GameObject>();
         input = RGInput.Instance;
-        //globeTransform = Find.ComponentOnChild<Transform>(this, "Planet");
         propsParent = Find.ChildByName(this, "Props");
+        rend = Find.ComponentOnChild<Renderer>(this, "Planet");
 
         for(int i = 0; i < propsParent.transform.childCount; i++) {
             props.Add(propsParent.transform.GetChild(i).gameObject);
         }
+    }
 
-
+    void Start() {
+        currentRadius = rend.bounds.extents.magnitude;
 
     }
 
     public void LevelUp() {
+        
         transform.localScale = new Vector3(transform.localScale.x * scaleFactor, transform.localScale.y * scaleFactor, transform.localScale.z * scaleFactor);
         for(int i = 0; i < props.Count; i++) {
             GameObject prop = props[i];
 
-            prop.transform.localScale *= 1/scaleFactor;
-
+            prop.transform.localScale *= 1 / scaleFactor;
         }
-
+        boy.transform.localScale *= 1 / scaleFactor;
     }
 
 	void Update () {
@@ -56,6 +59,8 @@ public class Planet : MonoBehaviour {
         if(input.ButtonIsDown(RGInput.Button.Touch)) {
             transform.RotateAround(transform.position, Vector3.up, touchPosition.x * rotationSpeed * Time.deltaTime);
             transform.RotateAround(transform.position, Vector3.right, touchPosition.y * rotationSpeed * Time.deltaTime);
+            boy.transform.RotateAround(transform.position, Vector3.up, -touchPosition.x * rotationSpeed * Time.deltaTime);
+            boy.transform.RotateAround(transform.position, Vector3.right, -touchPosition.y * rotationSpeed * Time.deltaTime);
         }
 
     }

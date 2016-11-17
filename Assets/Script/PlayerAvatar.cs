@@ -37,15 +37,11 @@ public class PlayerAvatar : MonoBehaviour {
             }
 
             charTransform.localRotation = startRotation * Quaternion.Euler(0, angle, 0);
-
-        
-
         }
         else {
             animationSpeed = 0f;
         }
 
         anim.SetFloat("runSpeed", animationSpeed);
-        Debug.Log("S: " + animationSpeed);
     }
 }
