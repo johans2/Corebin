@@ -20,6 +20,18 @@ ModelImporter:
     100024: polySurface214
     100026: polySurface51
     100028: //RootNode
+    100030: group5
+    100032: group6
+    100034: group7
+    100036: polySurface209
+    100038: polySurface216
+    100040: polySurface218
+    100042: polySurface220
+    100044: polySurface221
+    100046: polySurface222
+    100048: polySurface223
+    100050: polySurface224
+    100052: TiltCar04:TiltCarWindMill
     400000: polySurface13
     400002: polySurface133
     400004: polySurface134
@@ -35,6 +47,18 @@ ModelImporter:
     400024: polySurface214
     400026: polySurface51
     400028: //RootNode
+    400030: group5
+    400032: group6
+    400034: group7
+    400036: polySurface209
+    400038: polySurface216
+    400040: polySurface218
+    400042: polySurface220
+    400044: polySurface221
+    400046: polySurface222
+    400048: polySurface223
+    400050: polySurface224
+    400052: TiltCar04:TiltCarWindMill
     2300000: polySurface13
     2300002: polySurface133
     2300004: polySurface134
@@ -49,6 +73,15 @@ ModelImporter:
     2300022: polySurface213
     2300024: polySurface214
     2300026: polySurface51
+    2300028: polySurface209
+    2300030: polySurface216
+    2300032: polySurface218
+    2300034: polySurface220
+    2300036: polySurface221
+    2300038: polySurface222
+    2300040: polySurface223
+    2300042: polySurface224
+    2300044: TiltCar04:TiltCarWindMill
     3300000: polySurface13
     3300002: polySurface133
     3300004: polySurface134
@@ -63,6 +96,15 @@ ModelImporter:
     3300022: polySurface213
     3300024: polySurface214
     3300026: polySurface51
+    3300028: polySurface209
+    3300030: polySurface216
+    3300032: polySurface218
+    3300034: polySurface220
+    3300036: polySurface221
+    3300038: polySurface222
+    3300040: polySurface223
+    3300042: polySurface224
+    3300044: TiltCar04:TiltCarWindMill
     4300000: polySurface133
     4300002: polySurface134
     4300004: polySurface195
@@ -77,6 +119,15 @@ ModelImporter:
     4300022: polySurface158
     4300024: polySurface13
     4300026: polySurface159
+    4300028: polySurface220
+    4300030: polySurface224
+    4300032: polySurface216
+    4300034: polySurface218
+    4300036: polySurface221
+    4300038: polySurface222
+    4300040: polySurface223
+    4300042: TiltCar04:TiltCarWindMill
+    4300044: polySurface209
   materials:
     importMaterials: 0
     materialName: 0
