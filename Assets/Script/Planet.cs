@@ -27,6 +27,7 @@ public class Planet : MonoBehaviour {
         input = RGInput.Instance;
         propsParent = Find.ChildByName(this, "Props");
         rend = Find.ComponentOnChild<Renderer>(this, "Planet");
+        CameraBehaviour.LevelUpFadeDoneSignal.AddListener(OnLevelUpFadeDone);
 
         for(int i = 0; i < propsParent.transform.childCount; i++) {
             props.Add(propsParent.transform.GetChild(i).gameObject);
@@ -37,26 +38,36 @@ public class Planet : MonoBehaviour {
         currentRadius = rend.bounds.extents.magnitude;
     }
 
-    public void LevelUp() {
-        level++;
-        transform.localScale *= Constants.PlanetScaleFactor; 
-        for(int i = 0; i < props.Count; i++) {
-            GameObject prop = props[i];
-
-            prop.transform.localScale *= 1 / Constants.PlanetScaleFactor;
-        }
-        LevelUpSignal.Dispatch(level);
-    }
-
-	void Update () {
-        if(Input.GetKeyDown(KeyCode.Space)) {
+    void Update() {
+        if(Input.GetKeyDown(KeyCode.L)) {
             LevelUp();
         }
-
-
+        
         HandleInput();
-	}
+    }
 
+    public void LevelUp() {
+        level++;
+        LevelUpSignal.Dispatch(level);
+    }
+    
+    private void OnLevelUpFadeDone() {
+        GrowPlanet();
+    }
+
+    private void GrowPlanet() {
+        LeanTween.scale(gameObject, transform.localScale * Constants.PlanetWiggleFactor, 0.05f).setLoopPingPong(5).setOnComplete(() => {
+            LeanTween.scale(gameObject, transform.localScale * Constants.PlanetScaleFactor, 0.4f).setEase(LeanTweenType.easeOutElastic);
+
+            for(int i = 0; i < props.Count; i++) {
+                GameObject prop = props[i];
+
+                LeanTween.scale(prop, prop.transform.localScale *= 1 / Constants.PlanetScaleFactor, 0.4f);
+            }
+            
+        });
+    }
+    
     private void HandleInput() {
         Vector2 touchPosition = input.GetTouchPosition() - new Vector2(0.5f, 0.5f);
         if(input.ButtonIsDown(RGInput.Button.Touch)) {
@@ -64,6 +75,10 @@ public class Planet : MonoBehaviour {
             transform.RotateAround(transform.position, Vector3.right, touchPosition.y * rotationSpeed * Time.deltaTime);
             boy.transform.RotateAround(transform.position, Vector3.up, -touchPosition.x * rotationSpeed * Time.deltaTime);
             boy.transform.RotateAround(transform.position, Vector3.right, -touchPosition.y * rotationSpeed * Time.deltaTime);
+        }
+
+        if(input.ButtonWasPressed(RGInput.Button.App)) {
+            LevelUp();
         }
 
     }

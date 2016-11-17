@@ -5,6 +5,8 @@ using System;
 
 public class PlayerAvatar : MonoBehaviour {
 
+
+
     private RGInput input;
     private Quaternion startRotation;
     private Transform charTransform;
@@ -13,13 +15,13 @@ public class PlayerAvatar : MonoBehaviour {
     private float animationSpeed;
 
     void Awake() {
-        Planet.LevelUpSignal.AddListener(OnLevelUp);
+        CameraBehaviour.LevelUpFadeDoneSignal.AddListener(OnLevelUp);
         input = RGInput.Instance;
         charTransform = Find.ComponentOnChild<Transform>(this, "Boy");
         anim = Find.ComponentOnChild<Animator>(this, "Boy");
     }
 
-    private void OnLevelUp(int newLevel) {
+    private void OnLevelUp() {
         transform.localScale *= 1 / Constants.PlanetScaleFactor;
     }
 
@@ -33,8 +35,7 @@ public class PlayerAvatar : MonoBehaviour {
             Vector2 refVector = Vector2.up;
             Vector2 touchVector = input.GetTouchPosition() - new Vector2(0.5f, 0.5f);
             animationSpeed = touchVector.magnitude;
-
-
+            
             float angle = Vector2.Angle(refVector, touchVector);
             Vector3 cross = Vector3.Cross(refVector, touchVector);
 
@@ -47,11 +48,10 @@ public class PlayerAvatar : MonoBehaviour {
         else {
             animationSpeed = 0f;
         }
-
         anim.SetFloat("runSpeed", animationSpeed);
     }
 
     void OnDestroy() {
-        Planet.LevelUpSignal.RemoveListener(OnLevelUp);
+        CameraBehaviour.LevelUpFadeDoneSignal.RemoveListener(OnLevelUp);
     }
 }
