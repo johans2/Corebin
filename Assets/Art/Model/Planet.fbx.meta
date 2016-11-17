@@ -13,8 +13,10 @@ ModelImporter:
     400004: Planet
     2300000: Hole
     2300002: Planet
+    2300004: //RootNode
     3300000: Hole
     3300002: Planet
+    3300004: //RootNode
     4300000: Planet
     4300002: Hole
   materials:
