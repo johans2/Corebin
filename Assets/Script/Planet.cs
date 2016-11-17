@@ -10,7 +10,7 @@ public class Planet : MonoBehaviour {
 
     RGInput input;
     public float rotationSpeed = 100f;
-    public Transform globeTransform;
+    //public Transform globeTransform;
 
 
     private float scaleFactor = 1.2f;
@@ -20,7 +20,7 @@ public class Planet : MonoBehaviour {
     void Awake() {
         props = new List<GameObject>();
         input = RGInput.Instance;
-        globeTransform = Find.ComponentOnChild<Transform>(this, "Planet");
+        //globeTransform = Find.ComponentOnChild<Transform>(this, "Planet");
         propsParent = Find.ChildByName(this, "Props");
 
         for(int i = 0; i < propsParent.transform.childCount; i++) {
@@ -32,11 +32,11 @@ public class Planet : MonoBehaviour {
     }
 
     public void LevelUp() {
-        globeTransform.localScale = new Vector3(globeTransform.localScale.x * scaleFactor, globeTransform.localScale.y * scaleFactor, globeTransform.localScale.z * scaleFactor);
+        transform.localScale = new Vector3(transform.localScale.x * scaleFactor, transform.localScale.y * scaleFactor, transform.localScale.z * scaleFactor);
         for(int i = 0; i < props.Count; i++) {
             GameObject prop = props[i];
 
-            prop.transform.Translate(new Vector3(0, 0.9f, 0), Space.Self);
+            prop.transform.localScale *= 1/scaleFactor;
 
         }
 
