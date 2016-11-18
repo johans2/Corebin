@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using RGCommon;
 using CakewalkIoC.Signal;
+using DarkTonic;
 
 public class CoreBinInteractable : Interactable {
 
