@@ -50,13 +50,16 @@ public class CoreBinInteractable : Interactable {
         switch(type) {
             case AnimalType.None:
                 break;
-            case AnimalType.Cow:
+        case AnimalType.Cow:
+            DarkTonic.MasterAudio.MasterAudio.PlaySound3DAtTransform ("Cow01", transform);
                 
                 break;
             case AnimalType.Chicken:
+            DarkTonic.MasterAudio.MasterAudio.PlaySound3DAtTransform ("Sheep01", transform);
 
                 break;
             case AnimalType.Cheep:
+            DarkTonic.MasterAudio.MasterAudio.PlaySound3DAtTransform ("ChickenBirds01", transform);
 
                 break;
             default:
