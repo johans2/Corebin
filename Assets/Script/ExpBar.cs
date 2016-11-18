@@ -40,8 +40,8 @@ public class ExpBar : MonoBehaviour {
         LeanTween.rotate(gameObject, startRotation + new Vector3(10f, 0, 0), 0.1f).setLoopPingPong(3).setOnComplete(() => {
             currentExp = Mathf.Clamp(0, currentExp + exp, requiredExp);
 
-            float newScale = Mathf.Lerp(0, 1, (float)currentExp / 100f);
-            float color = Mathf.Lerp(0, 1, (float)currentExp / 100f);
+            float newScale = Mathf.Lerp(0, 1, (float)currentExp / requiredExp);
+            float color = Mathf.Lerp(0, 1, (float)currentExp / requiredExp);
             expRenderer.material.SetFloat("_LerpValue", color);
             
             LeanTween.scale(expBar, new Vector3(expBar.transform.localScale.x, newScale, expBar.transform.localScale.z), 0.2f).setOnComplete(() => {
