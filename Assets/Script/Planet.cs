@@ -68,9 +68,9 @@ public class Planet : MonoBehaviour {
     }
 
     private void GrowPlanet() {
+        DarkTonic.MasterAudio.MasterAudio.PlaySound3DAtTransform("Planet", transform);
         LeanTween.scale(gameObject, transform.localScale * Constants.PlanetWiggleFactor, 0.05f).setLoopPingPong(5).setOnComplete(() => {
 
-            DarkTonic.MasterAudio.MasterAudio.PlaySound3DAtTransform("Planet", transform);
 
             LeanTween.scale(gameObject, transform.localScale * Constants.PlanetScaleFactor, 0.4f).setEase(LeanTweenType.easeOutElastic);
             StartScalingPlanetSignal.Dispatch();
@@ -97,10 +97,10 @@ public class Planet : MonoBehaviour {
             boy.transform.RotateAround(transform.position, Vector3.up, -touchPosition.x * rotationSpeed * Time.deltaTime);
             boy.transform.RotateAround(transform.position, Vector3.right, -touchPosition.y * rotationSpeed * Time.deltaTime);
         }
-
+        /*
         if(input.ButtonWasPressed(RGInput.Button.App)) {
             LevelUp();
-        }
+        }*/
 
     }
 }
