@@ -17,6 +17,8 @@ public class InteractableTree : Interactable {
         isInteractable = false;
         GameObject axe = (GameObject)Instantiate(cuttingAxe, player.ObjectHolder.position, player.ObjectHolder.rotation);
 
+        DarkTonic.MasterAudio.MasterAudio.PlaySound3DAtTransform ("WoodChop", transform);
+
         LeanTween.rotateLocal(axe, new Vector3(50, 0, 0), 0.2f).setLoopPingPong(5).setOnComplete(() => {
             Destroy(axe);
             OnInteractionComplete(log);

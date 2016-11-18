@@ -69,6 +69,9 @@ public class Planet : MonoBehaviour {
 
     private void GrowPlanet() {
         LeanTween.scale(gameObject, transform.localScale * Constants.PlanetWiggleFactor, 0.05f).setLoopPingPong(5).setOnComplete(() => {
+
+            DarkTonic.MasterAudio.MasterAudio.PlaySound3DAtTransform("Planet", transform);
+
             LeanTween.scale(gameObject, transform.localScale * Constants.PlanetScaleFactor, 0.4f).setEase(LeanTweenType.easeOutElastic);
             StartScalingPlanetSignal.Dispatch();
             for(int i = 0; i < props.Count; i++) {

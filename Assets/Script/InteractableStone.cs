@@ -12,6 +12,8 @@ public class InteractableStone : Interactable {
         isInteractable = false;
         GameObject pick = (GameObject)Instantiate(stonePick, player.ObjectHolder.position, player.ObjectHolder.rotation);
 
+        DarkTonic.MasterAudio.MasterAudio.PlaySound3DAtTransform ("StoneChisel", transform);
+
         LeanTween.rotateLocal(pick, new Vector3(60, 0, 0), 0.2f).setLoopPingPong(5).setOnComplete(() => {
             Destroy(pick);
             OnInteractionComplete(stone);
