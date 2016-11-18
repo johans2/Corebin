@@ -11,10 +11,12 @@ public class CoreBinInteractable : Interactable {
 
     private Transform throwTarget1;
     private Transform throwTarget2;
+    private ParticleSystem explosion;
 
     void Awake() {
         throwTarget1 = Find.ComponentOnChild<Transform>(this, "ThrowTarget1");
         throwTarget2 = Find.ComponentOnChild<Transform>(this, "ThrowTarget2");
+        explosion = Find.ComponentOnChild<ParticleSystem>(this, "ParticleSplash");
     }
     
     public override void Interact(PlayerAvatar player, Action<GameObject> OnInteractionComplete) {
@@ -26,6 +28,7 @@ public class CoreBinInteractable : Interactable {
             LeanTween.move(loot, throwTarget2.position, 0.2f).setOnComplete(() => {
                 // Gain exp!
                 Destroy(loot);
+                explosion.Emit(10);
                 GainExpSignal.Dispatch(expGain);
                 OnInteractionComplete(null);  
             });
