@@ -27,6 +27,14 @@ public class CoreBinInteractable : Interactable {
             LeanTween.rotate(loot, throwTarget2.rotation.eulerAngles, 0.2f);
             LeanTween.move(loot, throwTarget2.position, 0.2f).setOnComplete(() => {
                 // Gain exp!
+
+                InteractableChicken animal = loot.GetComponent<Interactable>() as InteractableChicken;
+                if(animal != null) {
+                    PlayAnimalSound(animal.type);
+
+                }
+
+
                 Destroy(loot);
                 explosion.Emit(10);
                 GainExpSignal.Dispatch(expGain);
@@ -36,4 +44,22 @@ public class CoreBinInteractable : Interactable {
 
     }
 
+    private void PlayAnimalSound(AnimalType type) {
+        switch(type) {
+            case AnimalType.None:
+                break;
+            case AnimalType.Cow:
+
+                break;
+            case AnimalType.Chicken:
+
+                break;
+            case AnimalType.Cheep:
+
+                break;
+            default:
+                break;
+        }
+
+    }
 }

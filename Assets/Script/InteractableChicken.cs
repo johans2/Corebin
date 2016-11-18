@@ -2,8 +2,16 @@
 using System.Collections;
 using System;
 
-public class InteractableChicken : Interactable {
+public enum AnimalType {
+    None,
+    Cow,
+    Chicken,
+    Cheep
+}
 
+public class InteractableChicken : Interactable {
+    
+    public AnimalType type;
     public float regrowTime = 15f;
     public GameObject chicken;
     
