@@ -12,7 +12,7 @@ public class InteractableStone : Interactable {
         isInteractable = false;
         GameObject pick = (GameObject)Instantiate(stonePick, player.ObjectHolder.position, player.ObjectHolder.rotation);
 
-        LeanTween.rotateLocal(pick, new Vector3(60, 0, 0), 0.1f).setLoopPingPong(5).setOnComplete(() => {
+        LeanTween.rotateLocal(pick, new Vector3(60, 0, 0), 0.2f).setLoopPingPong(5).setOnComplete(() => {
             Destroy(pick);
             OnInteractionComplete(stone);
             ReGrow();
