@@ -45,11 +45,12 @@ public class CoreBinInteractable : Interactable {
     }
 
     private void PlayAnimalSound(AnimalType type) {
+        Debug.Log(type);
         switch(type) {
             case AnimalType.None:
                 break;
             case AnimalType.Cow:
-
+                
                 break;
             case AnimalType.Chicken:
 
