@@ -11,6 +11,7 @@ public class Planet : MonoBehaviour {
     public static Signal StartScalingPlanetSignal = new Signal();
 
     public GameObject boy;
+    public GameObject otherPlanets;
     public float rotationSpeed = 100f;
     
     private RGInput input;
@@ -59,6 +60,7 @@ public class Planet : MonoBehaviour {
     public void LevelUp() {
         level++;
         LevelUpSignal.Dispatch(level);
+        rotationSpeed /= Constants.PlanetScaleFactor;
     }
     
     private void OnLevelUpFadeDone() {
@@ -87,6 +89,8 @@ public class Planet : MonoBehaviour {
         if(input.ButtonIsDown(RGInput.Button.Touch)) {
             transform.RotateAround(transform.position, Vector3.up, touchPosition.x * rotationSpeed * Time.deltaTime);
             transform.RotateAround(transform.position, Vector3.right, touchPosition.y * rotationSpeed * Time.deltaTime);
+
+            otherPlanets.transform.rotation = transform.rotation;
             boy.transform.RotateAround(transform.position, Vector3.up, -touchPosition.x * rotationSpeed * Time.deltaTime);
             boy.transform.RotateAround(transform.position, Vector3.right, -touchPosition.y * rotationSpeed * Time.deltaTime);
         }
