@@ -8,6 +8,7 @@ using CakewalkIoC.Signal;
 public class Planet : MonoBehaviour {
 
     public static Signal<int> LevelUpSignal = new Signal<int>();
+    public static Signal StartScalingPlanetSignal = new Signal();
 
     public GameObject boy;
     public float rotationSpeed = 100f;
@@ -67,7 +68,7 @@ public class Planet : MonoBehaviour {
     private void GrowPlanet() {
         LeanTween.scale(gameObject, transform.localScale * Constants.PlanetWiggleFactor, 0.05f).setLoopPingPong(5).setOnComplete(() => {
             LeanTween.scale(gameObject, transform.localScale * Constants.PlanetScaleFactor, 0.4f).setEase(LeanTweenType.easeOutElastic);
-
+            StartScalingPlanetSignal.Dispatch();
             for(int i = 0; i < props.Count; i++) {
                 GameObject prop = props[i];
 

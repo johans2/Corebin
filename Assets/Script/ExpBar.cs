@@ -8,7 +8,7 @@ public class ExpBar : MonoBehaviour {
 
     public static Signal LevelUpSignal = new Signal();
 
-    private int requiredExp = 100;
+    private int requiredExp = 150;
 
     private GameObject expBar;
     private MeshRenderer expRenderer;
@@ -30,6 +30,7 @@ public class ExpBar : MonoBehaviour {
     private void OnLevelUp() {
         currentExp = 0;
         transform.position *= Constants.PlanetScaleFactor;
+        transform.position += new Vector3(0, 5, 0);
         expBar.transform.localScale = new Vector3(expBar.transform.localScale.x, 0.05f, expBar.transform.localScale.z);
         transform.localScale *= Constants.PlanetScaleFactor;
         expRenderer.material.SetFloat("_LerpValue", 0);

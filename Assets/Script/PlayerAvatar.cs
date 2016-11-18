@@ -27,7 +27,7 @@ public class PlayerAvatar : MonoBehaviour {
     private Transform objectHolder;
     
     void Awake() {
-        CameraBehaviour.LevelUpFadeDoneSignal.AddListener(OnLevelUp);
+        Planet.StartScalingPlanetSignal.AddListener(OnLevelUp);
         input = RGInput.Instance;
         charTransform = Find.ComponentOnChild<Transform>(this, "Boy");
         anim = Find.ComponentOnChild<Animator>(this, "Boy");
@@ -35,7 +35,8 @@ public class PlayerAvatar : MonoBehaviour {
     }
 
     private void OnLevelUp() {
-        transform.localScale *= 1 / Constants.PlanetScaleFactor;
+
+        LeanTween.scale(gameObject, transform.localScale *= 1 / Constants.PlanetScaleFactor, 0.4f);
     }
 
     void Start () {
